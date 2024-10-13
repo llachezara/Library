@@ -1,7 +1,8 @@
 import * as api from './api.js';
+import settings from '../config.js'
 
-const host = 'http://localhost:3030'
-api.settings.host = 'http://localhost:3030';
+const host = settings.host
+api.settings.host = settings.host;
 
 export const login = api.login;
 export const register = api.register;
