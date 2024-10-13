@@ -1,0 +1,32 @@
+name: Build, test, deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v4
+    - name: Install Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm install
+    - name: Start the frontend
+      run: npm run start:fe &
+    - name: Start the backend
+      run: npm run start:be &
+    - name: Run frontend tests
+      run: npm test:fe
