@@ -28,6 +28,9 @@ jobs:
       run: npm run start:fe &
     - name: Start the backend
       run: npm run start:be &
+    - name: Overwrite config
+      run: | 
+        echo "export const settings = {host: 'https://localhost:3030'};" > src/config.js
     - name: Install playwright
       run: npx playwright install
     - name: Run frontend tests
