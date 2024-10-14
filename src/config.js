@@ -1,5 +1,3 @@
-const settings = {
-    host: 'https://library-1cnj.onrender.com'
+export const settings = {
+    host: 'http://localhost:3030'
 }
-
-export default settings;
