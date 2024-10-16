@@ -191,5 +191,5 @@ test('Verify redirection of Logout link after user login', async ({ page }) => {
   await page.waitForNavigation();
 
   const redirectedURL = page.url();
-  expect(redirectedURL).toBe('http://localhost:3000/catalog');
+  expect(redirectedURL).toBe('http://localhost:3000/');
 });
